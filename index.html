@@ -10,17 +10,23 @@
   ============================================================
   GUÍA RÁPIDA PARA VOS (dueño/a del emprendimiento)
   ============================================================
-  1) Creá una carpeta llamada "images" al lado de este archivo
-     index.html (ya viene creada si descargaste la carpeta completa).
-  2) Guardá tus fotos ahí con el nombre EXACTO que pide cada
-     producto. Vas a ver el nombre esperado escrito arriba de
-     cada casillero de foto vacío en la propia página (mientras
-     no subas la imagen, aparece un cartelito "Agregá tu foto").
-  3) Formato recomendado: .jpg o .png, fotos cuadradas o 4:3,
-     buena luz natural, fondo simple (¡como tus fotos de muestra!).
-  4) Para cambiar nombres de productos, precios o textos, buscá
+  1) Adentro de la carpeta "images" tenés que tener una subcarpeta
+     por producto: "alfajor de maizena", "alfajor de chocolate",
+     "pastafrola", "lemon pie", "tarta de ricota".
+  2) Adentro de cada subcarpeta, guardá las fotos numeradas:
+     1.jpeg, 2.jpeg, 3.jpeg... siempre empezando en 1, sin saltos.
+     La página las detecta solas y arma una mini galería con
+     flechas y puntitos si hay más de una foto.
+  3) Mientras una carpeta no tenga ninguna foto, aparece un
+     cartelito "Agregá fotos en..." con la ruta esperada.
+  4) Formato recomendado: .jpeg, fotos cuadradas o 4:3, buena luz
+     natural, fondo simple (¡como tus fotos de muestra!).
+  5) Para cambiar nombres de productos, precios o textos, buscá
      el texto directamente en este archivo (Ctrl+F) y editalo.
-  5) El número de WhatsApp ya está cargado. Solo falta tu usuario
+     Ojo: agregué "Alfajores de chocolate" con precio "$ ---"
+     porque vi que tenés esa carpeta — buscá "$ ---" y poné el
+     precio real.
+  6) El número de WhatsApp ya está cargado. Solo falta tu usuario
      de Instagram: buscá la palabra TUINSTAGRAM en este archivo y
      reemplazala por tu usuario real (sin la @).
   ============================================================
@@ -232,11 +238,42 @@
     font-size:1.6rem;
   }
   .photo.is-empty::after{
-    content:"Agregá tu foto\A" attr(data-file);
+    content:"Agregá fotos en\A" attr(data-folder) "/1.jpeg, 2.jpeg\2026";
     white-space:pre-line;
     font-family:'EB Garamond', serif; font-style:italic;
-    font-size:.85rem; color:var(--ink-soft);
+    font-size:.82rem; color:var(--ink-soft);
   }
+  .photo.is-empty .g-img,
+  .photo.is-empty .g-nav,
+  .photo.is-empty .g-dots{ display:none; }
+
+  .g-img{ opacity:0; transition:opacity .35s ease; }
+  .g-img.is-loaded{ opacity:1; }
+
+  .g-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:32px; height:32px; border-radius:50%; border:none;
+    background:rgba(62,43,30,.45); color:var(--paper-light);
+    font-size:1.1rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .2s ease, background .2s ease;
+  }
+  .g-nav:hover{ background:rgba(62,43,30,.7); }
+  .g-prev{ left:8px; }
+  .g-next{ right:8px; }
+  .photo:hover .g-nav{ opacity:1; }
+  .photo.single-photo .g-nav{ display:none; }
+
+  .g-dots{
+    position:absolute; bottom:8px; left:0; right:0;
+    display:flex; gap:6px; justify-content:center;
+  }
+  .g-dots button{
+    width:7px; height:7px; border-radius:50%; border:none; padding:0;
+    background:rgba(251,244,226,.55); cursor:pointer;
+  }
+  .g-dots button.active{ background:var(--paper-light); }
+  .photo.single-photo .g-dots{ display:none; }
 
   .card .info{ padding:16px 8px 4px; text-align:center; }
   .card .info h3{ font-size:1.25rem; font-family:'Playfair Display', serif; }
@@ -365,30 +402,51 @@
   <div class="category-head">
     <span class="eyebrow">El menú</span>
     <h2>Nuestros dulces</h2>
-    <p>Cuatro clásicos, hechos como en casa.</p>
+    <p>Clásicos, hechos como en casa.</p>
   </div>
   <div class="grid">
     <div class="card">
-      <div class="photo is-empty" data-file="images/alfajor de maizena.jpeg">
-        <img src="images/alfajor de maizena.jpeg" alt="Alfajores de maicena chicos" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      <div class="photo" data-folder="images/alfajor de maizena" data-label="Alfajores de maicena chicos">
+        <img class="g-img" alt="Alfajores de maicena chicos">
+        <button class="g-nav g-prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="g-nav g-next" type="button" aria-label="Foto siguiente">›</button>
+        <div class="g-dots"></div>
       </div>
       <div class="info"><h3>Alfajores de maicena chicos</h3><p class="desc">El clásico de siempre, en tamaño chico.</p><p class="price">El cuarto $7.000</p></div>
     </div>
     <div class="card">
-      <div class="photo is-empty" data-file="images/pastafrola.jpeg">
-        <img src="images/pastafrola.jpeg" alt="Pastafrola grande" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      <div class="photo" data-folder="images/alfajor de chocolate" data-label="Alfajores de chocolate">
+        <img class="g-img" alt="Alfajores de chocolate">
+        <button class="g-nav g-prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="g-nav g-next" type="button" aria-label="Foto siguiente">›</button>
+        <div class="g-dots"></div>
+      </div>
+      <div class="info"><h3>Alfajores de chocolate</h3><p class="desc">Bañados en chocolate, receta de la casa.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo" data-folder="images/pastafrola" data-label="Pastafrola grande">
+        <img class="g-img" alt="Pastafrola grande">
+        <button class="g-nav g-prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="g-nav g-next" type="button" aria-label="Foto siguiente">›</button>
+        <div class="g-dots"></div>
       </div>
       <div class="info"><h3>Pastafrola grande</h3><p class="desc">Masa casera rellena de dulce, tamaño grande.</p><p class="price">$12.000</p></div>
     </div>
     <div class="card">
-      <div class="photo is-empty" data-file="images/lemon pie.jpeg">
-        <img src="images/lemon pie.jpeg" alt="Lemon pie" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      <div class="photo" data-folder="images/lemon pie" data-label="Lemon pie">
+        <img class="g-img" alt="Lemon pie">
+        <button class="g-nav g-prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="g-nav g-next" type="button" aria-label="Foto siguiente">›</button>
+        <div class="g-dots"></div>
       </div>
       <div class="info"><h3>Lemon pie</h3><p class="desc">Base crocante, crema de limón y merengue.</p><p class="price">$16.000</p></div>
     </div>
     <div class="card">
-      <div class="photo is-empty" data-file="images/tarta de ricota.jpeg">
-        <img src="images/tarta de ricota.jpeg" alt="Tarta de ricota" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      <div class="photo" data-folder="images/tarta de ricota" data-label="Tarta de ricota">
+        <img class="g-img" alt="Tarta de ricota">
+        <button class="g-nav g-prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="g-nav g-next" type="button" aria-label="Foto siguiente">›</button>
+        <div class="g-dots"></div>
       </div>
       <div class="info"><h3>Tarta de ricota</h3><p class="desc">Suave y cremosa, receta de la casa.</p><p class="price">$16.000</p></div>
     </div>
@@ -426,6 +484,63 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: .15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ---- Galería automática: busca 1.jpeg, 2.jpeg, 3.jpeg... en cada carpeta ---- */
+  function checkImage(url){
+    return new Promise(resolve => {
+      const im = new Image();
+      im.onload = () => resolve(true);
+      im.onerror = () => resolve(false);
+      im.src = url;
+    });
+  }
+
+  async function initGallery(photoEl){
+    const folder = photoEl.dataset.folder;
+    const img = photoEl.querySelector('.g-img');
+    const prevBtn = photoEl.querySelector('.g-prev');
+    const nextBtn = photoEl.querySelector('.g-next');
+    const dotsWrap = photoEl.querySelector('.g-dots');
+
+    const urls = [];
+    let i = 1;
+    while (i <= 30) {
+      const url = `${folder}/${i}.jpeg`;
+      const ok = await checkImage(url);
+      if (!ok) break;
+      urls.push(url);
+      i++;
+    }
+
+    if (urls.length === 0) {
+      photoEl.classList.add('is-empty');
+      return;
+    }
+    if (urls.length === 1) photoEl.classList.add('single-photo');
+
+    let current = 0;
+    urls.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ver foto ${idx + 1}`);
+      dot.addEventListener('click', () => show(idx));
+      dotsWrap.appendChild(dot);
+    });
+
+    function show(idx){
+      current = (idx + urls.length) % urls.length;
+      img.classList.remove('is-loaded');
+      img.src = urls[current];
+      img.onload = () => img.classList.add('is-loaded');
+      [...dotsWrap.children].forEach((d, di) => d.classList.toggle('active', di === current));
+    }
+
+    prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn.addEventListener('click', () => show(current + 1));
+    show(0);
+  }
+
+  document.querySelectorAll('.photo[data-folder]').forEach(initGallery);
 </script>
 
 </body>
