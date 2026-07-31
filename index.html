@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amor Auténtico · Repostería artesanal</title>
+<meta name="description" content="Amor Auténtico — budines, alfajores de maicena, tortas, cookies, brownies y pastelitos hechos a mano, con amor.">
+
+<!--
+  ============================================================
+  GUÍA RÁPIDA PARA VOS (dueño/a del emprendimiento)
+  ============================================================
+  1) Creá una carpeta llamada "images" al lado de este archivo
+     index.html (ya viene creada si descargaste la carpeta completa).
+  2) Guardá tus fotos ahí con el nombre EXACTO que pide cada
+     producto. Vas a ver el nombre esperado escrito arriba de
+     cada casillero de foto vacío en la propia página (mientras
+     no subas la imagen, aparece un cartelito "Agregá tu foto").
+  3) Formato recomendado: .jpg o .png, fotos cuadradas o 4:3,
+     buena luz natural, fondo simple (¡como tus fotos de muestra!).
+  4) Para cambiar nombres de productos, precios o textos, buscá
+     el texto directamente en este archivo (Ctrl+F) y editalo.
+  5) Reemplazá los datos de contacto (WhatsApp, Instagram) en la
+     sección "Escribinos" y en el botón flotante, buscando la
+     palabra TUNUMERO y TUINSTAGRAM en este archivo.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:      #EFDFB8;
+    --paper-deep: #E4CE9C;
+    --paper-light:#FBF4E2;
+    --ink:        #3E2B1E;
+    --ink-soft:   #5C4530;
+    --wine:       #7B2431;
+    --wine-deep:  #5E1B25;
+    --clay:       #BE7157;
+    --gold:       #A07A34;
+    --thread:     #C9AE7C;
+    --shadow: 0 10px 24px -12px rgba(62,43,30,.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'EB Garamond', Georgia, serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* --- textured paper background, everywhere --- */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.55;
+    mix-blend-mode:multiply;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(190,113,87,.10), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(160,122,52,.12), transparent 45%),
+      repeating-radial-gradient(circle at 50% 50%, rgba(62,43,30,.035) 0, rgba(62,43,30,.035) 1px, transparent 1px, transparent 3px);
+  }
+
+  h1,h2,h3{ font-family:'Playfair Display', Georgia, serif; margin:0; color:var(--wine-deep); }
+  .script{ font-family:'Caveat', cursive; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+  .eyebrow{
+    font-family:'Caveat', cursive; font-size:1.5rem; color:var(--wine);
+    letter-spacing:.02em;
+  }
+
+  /* ---------------- header / nav ---------------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(var(--paper-light), var(--paper-light) 92%, transparent);
+    background-color:var(--paper-light);
+    border-bottom:1px solid rgba(62,43,30,.15);
+    box-shadow:0 2px 10px -6px rgba(62,43,30,.25);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 24px; max-width:1100px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Caveat', cursive; font-weight:700;
+    font-size:1.7rem; color:var(--wine-deep); text-decoration:none;
+  }
+  .brand .seal-mini{ width:30px; height:30px; flex:0 0 auto; }
+  .navlinks{ display:flex; gap:26px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; color:var(--ink-soft); font-size:.98rem;
+    letter-spacing:.03em; text-transform:uppercase; font-weight:500;
+    padding:6px 2px; border-bottom:2px solid transparent; transition:.25s;
+  }
+  .navlinks a:hover{ color:var(--wine); border-color:var(--clay); }
+  .menu-toggle{
+    display:none; background:none; border:none; cursor:pointer;
+    font-family:'Caveat',cursive; font-size:1.2rem; color:var(--wine-deep);
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:110px 24px 130px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at top, rgba(251,244,226,.6), transparent 60%),
+      var(--paper);
+  }
+  .hero .heart-doodle{
+    width:46px; margin:0 auto 18px; opacity:.85;
+  }
+  .hero h1{
+    font-family:'Caveat', cursive; font-weight:700;
+    font-size:clamp(3.2rem, 9vw, 6rem);
+    color:var(--wine-deep);
+    text-shadow:0 2px 0 rgba(255,255,255,.25);
+    line-height:1;
+  }
+  .hero .sub{
+    max-width:520px; margin:22px auto 0;
+    font-style:italic; color:var(--ink-soft);
+    font-size:1.25rem;
+  }
+  .hero .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:40px;
+    background:var(--wine); color:var(--paper-light);
+    font-family:'Playfair Display', serif; font-weight:600;
+    letter-spacing:.02em;
+    padding:14px 30px; border-radius:999px;
+    text-decoration:none; box-shadow:var(--shadow);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .hero .cta:hover{ transform:translateY(-3px); box-shadow:0 16px 26px -12px rgba(94,27,37,.5); }
+  .hero .cta::before{ content:"♥"; font-size:.9rem; }
+
+  .torn-edge{
+    position:absolute; left:0; right:0; bottom:-1px; height:34px;
+    background-repeat:repeat-x; background-size:34px 34px;
+    background-image:
+      linear-gradient(135deg, var(--paper-light) 50%, transparent 50%),
+      linear-gradient(-135deg, var(--paper-light) 50%, transparent 50%);
+    background-position:0 0, 17px 0;
+  }
+
+  /* ---------------- letter intro ---------------- */
+  .letter-section{ padding:90px 24px 40px; }
+  .letter-card{
+    max-width:640px; margin:0 auto;
+    background:var(--paper-light);
+    padding:48px 44px;
+    box-shadow:var(--shadow);
+    position:relative;
+    border:1px solid rgba(62,43,30,.08);
+    transform:rotate(-.4deg);
+  }
+  .letter-card p{ margin:0 0 16px; color:var(--ink-soft); }
+  .letter-card .sign{
+    font-family:'Caveat', cursive; font-size:2rem; color:var(--wine);
+    margin-top:22px; display:flex; align-items:center; gap:12px;
+  }
+  .letter-card .sign svg{ width:34px; height:34px; }
+
+  /* ---------------- thread + seal divider ---------------- */
+  .thread{
+    display:flex; flex-direction:column; align-items:center;
+    padding:56px 0 10px;
+  }
+  .thread .line{ width:1px; height:46px; background:repeating-linear-gradient(var(--thread) 0 6px, transparent 6px 12px); }
+  .seal{
+    width:56px; height:56px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #9a3040, var(--wine-deep));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 14px -6px rgba(94,27,37,.6), inset 0 -3px 6px rgba(0,0,0,.25);
+    color:var(--paper-light); font-size:1.3rem;
+  }
+
+  /* ---------------- product sections ---------------- */
+  .category{ padding:20px 24px 40px; scroll-margin-top:90px; }
+  .category-head{ text-align:center; max-width:560px; margin:0 auto 46px; }
+  .category-head .eyebrow{ display:block; margin-bottom:6px; }
+  .category-head h2{ font-size:clamp(2rem, 4vw, 2.6rem); }
+  .category-head p{ color:var(--ink-soft); margin-top:10px; }
+
+  .grid{
+    display:grid; gap:34px;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    max-width:1050px; margin:0 auto;
+  }
+
+  .card{
+    background:var(--paper-light);
+    padding:14px 14px 20px;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(62,43,30,.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .grid .card:nth-child(3n+1){ transform:rotate(-1.1deg); }
+  .grid .card:nth-child(3n+2){ transform:rotate(.8deg); }
+  .grid .card:nth-child(3n+3){ transform:rotate(-.4deg); }
+  .card:hover{ transform:translateY(-6px) rotate(0deg) !important; box-shadow:0 20px 30px -16px rgba(62,43,30,.4); }
+
+  .photo{
+    position:relative; width:100%; aspect-ratio:4/3;
+    background:var(--paper-deep);
+    border:1px dashed rgba(62,43,30,.3);
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .photo img{ width:100%; height:100%; object-fit:cover; }
+  .photo.is-empty{
+    display:flex; flex-direction:column; gap:6px;
+    align-items:center; justify-content:center;
+    text-align:center; padding:14px;
+  }
+  .photo.is-empty::before{
+    content:"📷";
+    font-size:1.6rem;
+  }
+  .photo.is-empty::after{
+    content:"Agregá tu foto\A" attr(data-file);
+    white-space:pre-line;
+    font-family:'EB Garamond', serif; font-style:italic;
+    font-size:.85rem; color:var(--ink-soft);
+  }
+
+  .card .info{ padding:16px 8px 4px; text-align:center; }
+  .card .info h3{ font-size:1.25rem; font-family:'Playfair Display', serif; }
+  .card .info .desc{
+    font-size:.92rem; color:var(--ink-soft); margin-top:6px; min-height:1.2em;
+  }
+  .card .info .price{
+    margin-top:10px; font-family:'Caveat', cursive; font-size:1.5rem; color:var(--wine);
+  }
+
+  /* ---------------- pedidos especiales ---------------- */
+  .special{
+    max-width:760px; margin:70px auto 0; text-align:center;
+    padding:50px 30px; background:var(--wine); color:var(--paper-light);
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .special h2{ color:var(--paper-light); font-size:2rem; }
+  .special p{ max-width:480px; margin:14px auto 26px; opacity:.92; }
+  .special a.cta-out{
+    display:inline-block; background:var(--paper-light); color:var(--wine-deep);
+    padding:13px 28px; border-radius:999px; text-decoration:none;
+    font-family:'Playfair Display', serif; font-weight:600;
+    transition:transform .25s;
+  }
+  .special a.cta-out:hover{ transform:translateY(-3px); }
+
+  /* ---------------- footer / contacto ---------------- */
+  footer{
+    margin-top:100px; padding:60px 24px 40px;
+    background:var(--ink); color:var(--paper);
+    text-align:center;
+  }
+  footer .script{ font-size:2.2rem; color:var(--paper-light); }
+  footer .contact-row{
+    display:flex; gap:26px; justify-content:center; flex-wrap:wrap;
+    margin:26px 0 30px; font-size:.98rem;
+  }
+  footer .contact-row a{ text-decoration:none; color:var(--paper); opacity:.9; }
+  footer .contact-row a:hover{ opacity:1; text-decoration:underline; }
+  footer .fine{ font-size:.85rem; opacity:.55; margin-top:20px; }
+
+  /* ---------------- floating whatsapp / seal button ---------------- */
+  .floating{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #9a3040, var(--wine-deep));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--paper-light); text-decoration:none; font-size:1.5rem;
+    box-shadow:0 10px 20px -8px rgba(94,27,37,.6);
+    transition:transform .25s;
+  }
+  .floating:hover{ transform:scale(1.08); }
+
+  /* ---------------- reveal on scroll ---------------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------------- responsive ---------------- */
+  @media (max-width: 760px){
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; background:var(--paper-light);
+      padding:10px 24px 20px; gap:14px;
+      border-bottom:1px solid rgba(62,43,30,.15);
+      display:none;
+    }
+    .navlinks.open{ display:flex; }
+    .menu-toggle{ display:block; }
+    .letter-card{ padding:34px 24px; }
+    .hero{ padding:80px 20px 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav class="nav">
+    <a href="#inicio" class="brand">
+      <svg class="seal-mini" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#7B2431"/><path d="M20 28c-5-4-9-7.2-9-11.4C11 13.4 13.4 11 16.4 11c1.9 0 3.3 1 3.6 2.4C20.3 12 21.7 11 23.6 11c3 0 5.4 2.4 5.4 5.6C29 20.8 25 24 20 28z" fill="#F1E4C3"/></svg>
+      Amor Auténtico
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰ menú</button>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#budines">Budines</a></li>
+      <li><a href="#alfajores">Alfajores</a></li>
+      <li><a href="#tortas">Tortas</a></li>
+      <li><a href="#cookies">Cookies &amp; Brownies</a></li>
+      <li><a href="#pastelitos">Pastelitos</a></li>
+      <li><a href="#cajas">Cajas surtidas</a></li>
+      <li><a href="#contacto">Escribinos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <svg class="heart-doodle" viewBox="0 0 40 40" fill="none" stroke="#7B2431" stroke-width="1.6">
+    <path d="M20 32c-8-6-15-11.5-15-18.2C5 8.6 8.6 5 13.2 5c3 0 5.3 1.6 5.8 3.9C19.5 6.6 21.8 5 24.8 5 29.4 5 33 8.6 33 13.8 33 20.5 26 26 20 32z"/>
+  </svg>
+  <h1>Amor Auténtico</h1>
+  <p class="sub">Budines, alfajores, tortas y más — horneados a mano, con los mismos ingredientes de siempre y todo el cariño de cada receta de casa.</p>
+  <a href="#budines" class="cta">Ver el menú</a>
+  <div class="torn-edge"></div>
+</section>
+
+<!-- ============ CARTA / INTRO ============ -->
+<section class="letter-section reveal">
+  <div class="letter-card">
+    <span class="eyebrow">Una cartita para vos</span>
+    <p style="margin-top:14px;">Acá en Amor Auténtico horneamos como en casa: con manteca de verdad, tiempo de sobra y muchas ganas de que cada bocado te haga sentir cuidado.</p>
+    <p>Cada budín, cada alfajor, cada torta sale de a poco, en tandas chicas, para que lo que llegue a tu mesa esté siempre fresco.</p>
+    <p>Elegí lo que se te antoje del menú de abajo, o escribinos si soñás con algo a tu manera. Lo hacemos con gusto.</p>
+    <div class="sign">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#7B2431"/><path d="M20 28c-5-4-9-7.2-9-11.4C11 13.4 13.4 11 16.4 11c1.9 0 3.3 1 3.6 2.4C20.3 12 21.7 11 23.6 11c3 0 5.4 2.4 5.4 5.6C29 20.8 25 24 20 28z" fill="#F1E4C3"/></svg>
+      Con amor, siempre.
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ BUDINES ============ -->
+<section class="category reveal" id="budines">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo uno</span>
+    <h2>Budines</h2>
+    <p>Tiernos, húmedos y perfectos para acompañar el mate o el café de la tarde.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/budin-vainilla.jpg">
+        <img src="images/budin-vainilla.jpg" alt="Budín de vainilla" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Budín de vainilla</h3><p class="desc">Clásico, esponjoso, con un toque de manteca dorada.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/budin-limon.jpg">
+        <img src="images/budin-limon.jpg" alt="Budín de limón" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Budín de limón</h3><p class="desc">Fresco y cítrico, con glaseado casero.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/budin-marmolado.jpg">
+        <img src="images/budin-marmolado.jpg" alt="Budín marmolado" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Budín marmolado</h3><p class="desc">Vainilla y chocolate, en el clásico dibujo marmolado.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/budin-naranja-choco.jpg">
+        <img src="images/budin-naranja-choco.jpg" alt="Budín de naranja y chocolate" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Naranja y chocolate</h3><p class="desc">Ralladura de naranja fresca y chips de chocolate.</p><p class="price">$ ---</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ ALFAJORES ============ -->
+<section class="category reveal" id="alfajores">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo dos</span>
+    <h2>Alfajores de maicena</h2>
+    <p>Los de toda la vida: se deshacen en la boca y rebalsan de dulce de leche.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/alfajor-clasico.jpg">
+        <img src="images/alfajor-clasico.jpg" alt="Alfajores de maicena clásicos" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Clásicos con coco</h3><p class="desc">Rellenos de dulce de leche, rebozados en coco rallado.</p><p class="price">$ --- / doc.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/alfajor-chocolate.jpg">
+        <img src="images/alfajor-chocolate.jpg" alt="Alfajores bañados en chocolate" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Bañados en chocolate</h3><p class="desc">Cobertura de chocolate semiamargo casero.</p><p class="price">$ --- / doc.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/alfajor-crema.jpg">
+        <img src="images/alfajor-crema.jpg" alt="Alfajores rellenos de crema" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Rellenos de crema</h3><p class="desc">Con azúcar impalpable, suaves y livianos.</p><p class="price">$ --- / doc.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ TORTAS ============ -->
+<section class="category reveal" id="tortas">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo tres</span>
+    <h2>Tortas</h2>
+    <p>Para cumpleaños, festejos o simplemente porque hoy se lo merecen.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/torta-chocolate.jpg">
+        <img src="images/torta-chocolate.jpg" alt="Torta de chocolate" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Torta de chocolate</h3><p class="desc">Bizcochuelo húmedo con ganache y dulce de leche.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/torta-red-velvet.jpg">
+        <img src="images/torta-red-velvet.jpg" alt="Torta red velvet" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Red velvet</h3><p class="desc">Con frosting de queso crema, suave y aterciopelada.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/torta-zanahoria.jpg">
+        <img src="images/torta-zanahoria.jpg" alt="Torta de zanahoria" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Torta de zanahoria</h3><p class="desc">Especiada, con nuez y frosting de queso crema.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/torta-personalizada.jpg">
+        <img src="images/torta-personalizada.jpg" alt="Torta personalizada" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>A tu manera</h3><p class="desc">Contanos la ocasión y armamos la torta con vos.</p><p class="price">A consultar</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ COOKIES & BROWNIES ============ -->
+<section class="category reveal" id="cookies">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo cuatro</span>
+    <h2>Cookies &amp; brownies</h2>
+    <p>Bordes crocantes, centro tierno — para comer recién horneadas.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/cookies-chips.jpg">
+        <img src="images/cookies-chips.jpg" alt="Cookies con chips de chocolate" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Cookies con chips</h3><p class="desc">Manteca dorada y mucho chocolate.</p><p class="price">$ --- / u.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/brownies-clasicos.jpg">
+        <img src="images/brownies-clasicos.jpg" alt="Brownies clásicos" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Brownies clásicos</h3><p class="desc">Densos, fudosos, con nuez opcional.</p><p class="price">$ --- / u.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/combo-cookies-brownies.jpg">
+        <img src="images/combo-cookies-brownies.jpg" alt="Combo cookies y brownies" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Combo mixto</h3><p class="desc">Una caja surtida de cookies y brownies para compartir.</p><p class="price">$ ---</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ PASTELITOS ============ -->
+<section class="category reveal" id="pastelitos">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo cinco</span>
+    <h2>Pastelitos &amp; facturas</h2>
+    <p>Masa hojaldrada hecha a mano, ideales para el desayuno o la merienda.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/pastelito-membrillo.jpg">
+        <img src="images/pastelito-membrillo.jpg" alt="Pastelitos de membrillo" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>De membrillo</h3><p class="desc">Hojaldre crocante con dulce de membrillo.</p><p class="price">$ --- / u.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/pastelito-batata.jpg">
+        <img src="images/pastelito-batata.jpg" alt="Pastelitos de batata" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>De batata</h3><p class="desc">Rellenos de dulce de batata casero.</p><p class="price">$ --- / u.</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/facturas-surtidas.jpg">
+        <img src="images/facturas-surtidas.jpg" alt="Facturas surtidas" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Facturas surtidas</h3><p class="desc">Docena mixta para compartir en la mesa.</p><p class="price">$ --- / doc.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><div class="line"></div><div class="seal">♥</div><div class="line"></div></div>
+
+<!-- ============ CAJAS SURTIDAS ============ -->
+<section class="category reveal" id="cajas">
+  <div class="category-head">
+    <span class="eyebrow">Capítulo seis</span>
+    <h2>Cajas surtidas</h2>
+    <p>Una selección de nuestros dulces para regalar o darte un gusto.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="photo is-empty" data-file="images/caja-mini-dulce.jpg">
+        <img src="images/caja-mini-dulce.jpg" alt="Caja mini dulce" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Caja mini dulce</h3><p class="desc">Cookies, alfajores y brownies bocado.</p><p class="price">$ ---</p></div>
+    </div>
+    <div class="card">
+      <div class="photo is-empty" data-file="images/caja-degustacion.jpg">
+        <img src="images/caja-degustacion.jpg" alt="Caja degustación" onerror="this.remove(); this.parentElement.classList.add('is-empty')">
+      </div>
+      <div class="info"><h3>Caja degustación</h3><p class="desc">Lo mejor de la casa, en una sola caja.</p><p class="price">$ ---</p></div>
+    </div>
+  </div>
+
+  <div class="special reveal">
+    <h2>¿Soñás con algo distinto?</h2>
+    <p>Contanos la ocasión, cuántas personas son y qué te gusta — armamos un pedido especial solo para vos.</p>
+    <a class="cta-out" href="#contacto">Contar mi idea</a>
+  </div>
+</section>
+
+<!-- ============ CONTACTO / FOOTER ============ -->
+<footer id="contacto">
+  <span class="script">Amor Auténtico</span>
+  <p style="max-width:420px;margin:14px auto 0;opacity:.85;">Hecho a mano, tanda por tanda. Escribinos y coordinamos tu pedido.</p>
+  <div class="contact-row">
+    <a href="https://wa.me/TUNUMERO" target="_blank" rel="noopener">WhatsApp: +54 9 TU NÚMERO</a>
+    <a href="https://instagram.com/TUINSTAGRAM" target="_blank" rel="noopener">Instagram: @TUINSTAGRAM</a>
+  </div>
+  <div class="fine">© <span id="year"></span> Amor Auténtico · Hecho con ♥</div>
+</footer>
+
+<a class="floating" href="https://wa.me/TUNUMERO" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">💬</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
